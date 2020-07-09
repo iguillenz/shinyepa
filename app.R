@@ -6,7 +6,6 @@ require(sas7bdat)
 require(haven)
 require( shinydashboard)
 require(forecast)
-load( 'Datos.Rdata')
 shinyApp(ui = ui,server = server)
 
 
