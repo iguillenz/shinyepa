@@ -8,6 +8,27 @@ require( shinydashboard)
 require(forecast)
 shinyApp(ui = ui,server = server)
 
+tnames<-sort(fechas)
+index<-read_sas('index.sas7bdat')
+
+index<-cbind(index, fecha=c(tnames,'2020T1'))
+indexnames<-names(index)[grep(names(index),pattern = 'i')]
+graficos<-c('Tasas de paro', 'Formacion', 'Abandono estudios')
+glabels<-c(  'Juvenil 16-24', 'Mayores 55-64',
+             'Estudios superiores 30-34','Adultos en formacion 25-64',
+              'Abandono temprano 18-24','Ni estudian ni trabajan 20-34')
+tecnicas<-c("Desestacionalizacion","Auto-ARIMA","Prediccion")
+nombres<-c('Tasa de paro juvenil ','Tasa de paro trabajadores mayores',
+           'Jovenes con estudios superiores', 'Adultos en formacion continua',
+           'Abandono temprado de la educacion', 'Jovenes que ni estudian ni trabajan')
+indexnames<-names(index)[grep(names(index),pattern = "i")];
+graficos<-c("Tasas de paro", "Formacion",'Formacion', "Abandono estudios");
+titulo<-c("Tasas de Paro","Jovenes con estudios superiores","Adultos en formacion","Abandono de estudios");
+glabels<-c("Juvenil 16-24", "Mayores 55-64",
+           "Estudios superiores 30-34","Adultos en formacion 25-64",
+           "Abandono temprano 20-24","Ni estudian ni trabajan 16-24");
+subt<-c('% Sobre el total del grupo de edad, y de la poblacion activa', '% Sobre el total del grupo de edad', '% Sobre el total del grupo de edad','% Sobre el total del grupo de edad')
+
 
 ui <- fluidPage(  
 
